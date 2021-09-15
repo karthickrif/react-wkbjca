@@ -30,6 +30,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
+
 function HomePage(props) {
   const { dispatch, data, sessionData } = props;
   const [logo, setLogo] = useState({
