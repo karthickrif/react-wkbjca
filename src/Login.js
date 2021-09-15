@@ -4,12 +4,9 @@ import {
   OutlinedInput,
   InputAdornment,
   Paper,
-  Card,
   Grid,
   Typography,
-  Input,
   Button,
-  Hidden,
   CircularProgress,
   Snackbar
 } from '@material-ui/core';
@@ -18,14 +15,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { connect } from 'react-redux';
 import { GetLoginData } from './Action';
 import MuiAlert from '@material-ui/lab/Alert';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Link,
-  Switch,
-  Redirect
-} from 'react-router-dom';
 
 function LoginPage(props) {
   const [loginData, setLoginData] = useState({
@@ -68,19 +57,23 @@ function LoginPage(props) {
       setLoginData({ progressStatus: false });
     }, 5000);
     //   setTimeout(() => {
+    //     console.log(authStatus)
+    //     if(authToken != undefined || authStatus == "failed"){
+    //           setSnackStatus(true);
+    //           console.log("Fail")
+    //           return;
+    //         }else{
+    //           setSnackStatus(false);
+    //           return;
+    //         }
+                
+
     // },5000);
   }
-  // function setSnack(){
-  //   console.log(authStatus)
-  //   if(authStatus != undefined || authStatus == "failed"){
-  //     setSnackStatus(true);
-  //     console.log("Fail")
-  //     return;
-  //   }else{
-  //     setSnackStatus(false);
-  //     return;
-  //   }
-  // }
+//  const setErrorSnack = (obj) => {
+//     console.log(obj)
+    
+//   }
   function handleClose() {
     setSnackStatus(false);
   }

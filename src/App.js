@@ -12,18 +12,42 @@ import {
   Redirect
 } from 'react-router-dom';
 import ClientsTable from './HomeComponents/Clients'
-
+import {
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  Paper,
+  Grid,
+  Typography,
+  Button,
+  CircularProgress,
+  Snackbar
+} from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 var route;
+var snack;
 function App(props) {
-  const { dispatch, data, sessionData } = props;
-
+  const { dispatch, data, sessionData, authStatus} = props;
   const [redirect, setRedirect] = useState(false);
+  const [snackStatus, setSnackStatus] = useState(false);
   useEffect(() => {
     if (sessionData != undefined) {
       setRedirect(true);
+    }else if(authStatus != undefined && authStatus == "failed"){
+      setSnackStatus(true);
+      setTimeout(() => {
+        setSnackStatus(false);
+      }, 5000);
+      console.log("Hl")
     }
+    console.log("authStatus",authStatus,snack);
   });
-
+  function changeSnack(){
+    var snack = true;
+  }
+  function handleClose() {
+    setSnackStatus(false);
+  }
   if (redirect) {
     return (
       <Router>
@@ -33,6 +57,7 @@ function App(props) {
     );
   } else {
     return (
+      <div>
       <Router>
         <Switch>
           <Route exact path="/login" children={<LoginPage />} />
@@ -41,6 +66,17 @@ function App(props) {
           <Route exact path="/home/clients" children={<ClientsTable/>} />
         </Switch>
       </Router>
+     <Snackbar
+        open={authStatus != undefined && !redirect ? snackStatus : false}
+        autoHideDuration={5000}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        onClose={handleClose}
+      >
+        <MuiAlert severity="error" elevation={6} variant="filled">
+          Error{console.log("snack",snack)}
+        </MuiAlert>
+      </Snackbar>
+      </div>
     );
   }
 }
@@ -48,7 +84,8 @@ function App(props) {
 const mapStateToProps = state => {
   return {
     data: state.LoginReducer && state.LoginReducer.loginData,
-    sessionData: state.LoginReducer && state.LoginReducer.sessionData
+    sessionData: state.LoginReducer && state.LoginReducer.sessionData,
+    authStatus: state.LoginReducer && state.LoginReducer.authStatus
   };
 };
 
