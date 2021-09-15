@@ -158,6 +158,14 @@ function HomePage(props) {
                 </IconButton>
               </Toolbar>
             </AppBar>
+            <div className="GreetUser">
+              Welcome{' '}
+              <span className="UserName">
+                {sessionData != undefined && sessionData.name != undefined
+                  ? sessionData.name + '!'
+                  : 'User!'}
+              </span>
+            </div>
             <div>&nbsp;</div>
             <Switch>
               <Route exact path="/home/clients" children={<ClientsTable />} />

@@ -15,10 +15,10 @@ p {
   margin-top: 50px;
   padding: 15%;
   /* box-shadow: 2px -2px 2px 2px rgb(0 0 0 / 20%), */
-    /* 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
-    border: 1px solid rgb(220, 220, 220, 0.8);
-    box-shadow: 10px 10px rgb(220, 220, 220, 0.6), -5px -5px rgb(220, 220, 220, 0.6) !important;
-
+  /* 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
+  border: 1px solid rgb(220, 220, 220, 0.8);
+  box-shadow: 10px 10px rgb(220, 220, 220, 0.6),
+    -5px -5px rgb(220, 220, 220, 0.6) !important;
 }
 .sigin_btn,
 .sigin_btn:hover {
@@ -48,7 +48,7 @@ p {
   height: 100% !important;
   min-height: 400px !important;
   background: none !important;
-  background-image: url(https://www.dropbox.com/s/lraogpqb1xlpipz/image_2021_09_15T09_59_54_841Z.png?dl=0) !important;
+  background-image: url('./img/sidebarBackground.png') !important;
 }
 /* .gridClass {
   padding-left: 10px !important;
@@ -118,11 +118,22 @@ select {
   color: red;
   font-family: Arial, Helvetica, sans-serif;
 }
-.DataTable{
+.DataTable {
   box-shadow: 1px 1px rgb(220, 220, 220, 0.8), -1px -1px rgb(220, 220, 220, 0.8) !important;
 }
-.loginFormControl{
-  width: 100%!important;
+.loginFormControl {
+  width: 100% !important;
+}
+.GreetUser {
+  color: rgb(0, 122, 255, 0.9);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px 0;
+}
+.UserName {
+  color: rgb(0, 122, 255);
+  font-size: 30px;
 }
 @media screen and (max-width: 767px) {
   .login_Card {
