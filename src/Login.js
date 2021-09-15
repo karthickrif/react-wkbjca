@@ -8,13 +8,11 @@ import {
   Typography,
   Button,
   CircularProgress,
-  Snackbar
 } from '@material-ui/core';
 import MailOutline from '@material-ui/icons/MailOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { connect } from 'react-redux';
 import { GetLoginData } from './Action';
-import MuiAlert from '@material-ui/lab/Alert';
 
 function LoginPage(props) {
   const [loginData, setLoginData] = useState({
@@ -23,8 +21,7 @@ function LoginPage(props) {
     reactivation_token: false,
     progressStatus: false
   });
-  const [snackStatus, setSnackStatus] = useState(false);
-  const { dispatch, data, sessionData, authStatus } = props;
+  const { dispatch, data, sessionData } = props;
 
   function getLoginValues(e) {
     let email;
@@ -56,26 +53,6 @@ function LoginPage(props) {
     setTimeout(() => {
       setLoginData({ progressStatus: false });
     }, 5000);
-    //   setTimeout(() => {
-    //     console.log(authStatus)
-    //     if(authToken != undefined || authStatus == "failed"){
-    //           setSnackStatus(true);
-    //           console.log("Fail")
-    //           return;
-    //         }else{
-    //           setSnackStatus(false);
-    //           return;
-    //         }
-                
-
-    // },5000);
-  }
-//  const setErrorSnack = (obj) => {
-//     console.log(obj)
-    
-//   }
-  function handleClose() {
-    setSnackStatus(false);
   }
 
   return (
@@ -129,16 +106,6 @@ function LoginPage(props) {
           </Paper>
         </Grid>
       </Grid>
-      <Snackbar
-        open={snackStatus}
-        autoHideDuration={5000}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        onClose={handleClose}
-      >
-        <MuiAlert severity="error" elevation={6} variant="filled">
-          Error
-        </MuiAlert>
-      </Snackbar>
     </div>
   );
 }
@@ -146,7 +113,6 @@ const mapStateToProps = state => {
   return {
     data: state.LoginReducer && state.LoginReducer.loginData,
     sessionData: state.LoginReducer && state.LoginReducer.sessionData,
-    authStatus: state.LoginReducer && state.LoginReducer.authStatus
   };
 };
 
